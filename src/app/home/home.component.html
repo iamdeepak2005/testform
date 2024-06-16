@@ -1,0 +1,29 @@
+<form class="example-form"  [formGroup]="userForm"  (ngSubmit)="onSubmit(userForm)" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input id = "input1" matInput placeholder="Ex. Pizza" formControlName="fname">
+
+    </mat-form-field>
+    <div  class = "divh" *ngIf="userForm.controls['fname'].invalid && (userForm.controls['fname'].touched ||userForm.controls['fname']?.dirty) || isFormSubmitted">
+      <div *ngIf="userForm.controls['fname'].errors?.['required']">First Name is required</div>
+      <div *ngIf="userForm.controls['fname'].errors?.['minlength']">Minimum 20 characters required for First Name</div>      
+    </div>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." formControlName="feed"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="chosenDate">
+
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <button type="submit" class="btn btn-primary">Submit</button>22
+  </form>
+
+  
